@@ -1,26 +1,43 @@
-# You can override the included template(s) by including variable overrides
-# SAST customization: https://docs.gitlab.com/ee/user/application_security/sast/#customizing-the-sast-settings
-# Secret Detection customization: https://docs.gitlab.com/ee/user/application_security/secret_detection/#customizing-settings
-# Dependency Scanning customization: https://docs.gitlab.com/ee/user/application_security/dependency_scanning/#customizing-the-dependency-scanning-settings
-# Container Scanning customization: https://docs.gitlab.com/ee/user/application_security/container_scanning/#customizing-the-container-scanning-settings
-# Note that environment variables can be set in several places
-# See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
-- build
-- test
-- deploy
-- review
-- dast
-- staging
-- canary
-- production
-- incremental rollout 10%
-- incremental rollout 25%
-- incremental rollout 50%
-- incremental rollout 100%
-- performance
-- cleanup
-sast:
-  stage: test
-include:
-- template: Auto-DevOps.gitlab-ci.yml
+    - build
+    - deploy
+
+variables: 
+    MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+    SONAR_HOST_URL: "http://localsonarqube:9000/"
+    SONAR_TOKEN: "squ_35c667f3567119d5702ffa5fb92ca6eaac5889a6"
+    SONAR_USER: "gitlab-runner"
+    SONAR_PASSWORD: "Password@123"
+    DEPLOY_STAGING_SSH_HOST: "ec2-user@172.16.1.121"
+default:
+    cache:
+        paths:
+            - .m2/repository/
+            - target/
+    image: maven:3-openjdk-11
+
+build_angular:
+    stage: build
+    image: node:14.18.2-alpine3.15
+    script:
+      - npm install
+      - npm run production-govio-planner
+      - tar czf govio-planner-app.tgz dist/*  
+    artifacts:
+        paths:
+          - govio-planner-app.tgz
+    only:
+      - main
+      - staging
+
+deploy_staging:
+  stage: deploy
+  image: kroniak/ssh-client
+  script:
+    - cp -r /tmp/ssh/ ~/.ssh
+    - scp -r govio-app.tgz $DEPLOY_STAGING_SSH_HOST:/tmp/
+    - ssh $DEPLOY_STAGING_SSH_HOST 'sudo tar xvf /tmp/govio-planner-app.tgz'
+    - ssh $DEPLOY_STAGING_SSH_HOST 'sudo rm -rf /usr/share/nginx/html/govio-planner-app/* && sudo cp -r dist/govio-planner-app/* /usr/share/nginx/html/govio-planner-app/'
+    - ssh $DEPLOY_STAGING_SSH_HOST 'sudo rm -rf /tmp/govio-planner-app.tgz dist'
+  only:
+    - staging
