@@ -18,7 +18,7 @@ default:
 
 build_angular:
     stage: build
-    image: node:14.18.2-alpine3.15
+    image: node:18.5.0-alpine3.15
     script:
       - npm install
       - npm run production-govio-planner
