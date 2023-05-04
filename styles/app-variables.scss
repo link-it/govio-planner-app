@@ -1,0 +1,54 @@
+$dark-primary-text: rgba(33, 33, 33, 1);
+$light-primary-text: rgba(255, 255, 255, 1);
+
+$text-color: rgba(33, 33, 33, 1);
+$text-2nd-color: rgba(33, 33, 33, .5);
+$text-3rd-color: rgba(33, 33, 33, .6);
+
+$reverse-text-color: #ffffff;
+
+$sidenavWidth: 310px;
+
+$background-color: rgba(245, 245, 245, 1);
+$background-2nd-color: #E3F2FD;
+$background-3rd-color: #F5F5F5;
+$background-4th-color: rgba(255, 255, 255, .75);
+$background-5th-color: rgba(0, 0, 0, .05);
+$background-6th-color: rgba(33, 33, 33, .05);
+$background-nth-color: #fff;
+$dark-background-color: rgba(237, 237, 237, 1);
+
+$app-primary: #EF5350;
+$app-accent: #0091EA;
+$app-warn: #03A9F4;
+
+$primary-text: rgba(33, 33, 33, 1);
+$secondary-text: rgba(33, 33, 33, .5);
+$primary-color: #EF5350;
+$secondary-color: #E1F5FE;
+$accent-color: #0091EA;
+$alert-color: #EF5350;
+$reverse-primary-text: $light-primary-text;
+$light-color: rgba(33, 33, 33, .05);
+
+:root {
+  // app
+  --content-background-color: #{$background-color};
+  // Link: hover color
+  --link-hover-color: #{$primary-color};
+  // Library
+  // ItemRow
+  --item-row-background-color: #{$reverse-primary-text};
+  --item-row-hover: #{$secondary-color};
+  --item-row-notify-color: #{$alert-color};
+  --item-row-metadata-color: #{$secondary-text};
+  --item-row-hover-action-color: #{$reverse-primary-text};
+  --item-row-action-color: #{$reverse-primary-text};
+  --item-row-action-background-color: #{$accent-color};
+  --item-row-hover-action-background-color: #{$primary-text};
+  // Table
+  --table-header-background-color: #{$light-color};
+  --table-row-background-color: #{$reverse-primary-text};
+  --table-row-hover: #{$secondary-color};
+  --table-header-color: #{$secondary-text};
+}

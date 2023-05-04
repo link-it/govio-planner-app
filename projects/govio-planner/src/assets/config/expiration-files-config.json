@@ -1,0 +1,29 @@
+{
+  "itemRow": {
+    "primaryText": [
+      { "field": "filename", "type": "text" }
+    ],
+    "secondaryText": [
+      { "field": "user.full_name", "type": "avatar", "tooltip": "user.full_name", "blockSpace": true }
+    ],
+    "metadata": {
+      "text": [
+        { "field": "id", "type": "cardinal", "class": "" },
+        { "field": "plan_id", "type": "text" }
+      ],
+      "label": []
+    },
+    "secondaryMetadata": [
+      { "field": "Caricato il", "type": "message", "class": "", "emptySpace": true },
+      { "field": "creation_date", "type": "date", "format": "DD-MM-YYYY", "class": "" }
+    ]
+  },
+
+  "details": [
+    { "label": "APP.LABEL.Filename", "field": "filename", "type": "text" },
+    { "label": "APP.LABEL.UserFullName", "field": "user.full_name", "type": "text" },
+    { "label": "APP.LABEL.PlanId", "field": "plan_id", "type": "text" },
+    { "label": "APP.LABEL.CreationDate", "field": "creation_date", "type": "date", "format": "DD-MM-YYYY hh:mm:ss" },
+    { "label": "APP.LABEL.Content", "field": "Scarica", "type": "download", "download": true, "icon": "upload" }
+  ]
+}
