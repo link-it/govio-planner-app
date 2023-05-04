@@ -26,9 +26,6 @@ build_angular:
     artifacts:
         paths:
           - govio-planner-app.tgz
-    only:
-      - main
-      - staging
 
 deploy_staging:
   stage: deploy
