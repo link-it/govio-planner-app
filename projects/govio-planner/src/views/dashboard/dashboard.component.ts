@@ -67,10 +67,6 @@ export class DashboardComponent implements OnInit, AfterContentChecked {
   }
 
   ngOnInit() {
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      // language changed
-    });
-
     this.pageloaderService.resetLoader();
     this.pageloaderService.isLoading.subscribe({
       next: (x) => { this._spin = x; },
