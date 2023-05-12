@@ -12,7 +12,7 @@ It must be performed only if the "node_module" folder is not present or if the p
 
 ## Development server
 
-Run `npm run start-govio-planner` for a dev server. Navigate to `http://localhost:6203/`. The app will automatically reload if you change any of the source files.
+Run `npm run start-govio-planner` for a dev server. Navigate to `http://localhost:5203/`. The app will automatically reload if you change any of the source files.
 
 ## Development server with proxy
 
@@ -38,7 +38,7 @@ Change the "HOST" attribute in the "GOVAPI" section:
 {
     ...
     "GOVAPI": {
-      "HOST": "http://localhost:6203",
+      "HOST": "http://localhost:5203",
       ...
     },
     ...

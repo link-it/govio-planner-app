@@ -101,8 +101,8 @@
 					},
 					"defaultConfiguration": "development",
 					"options": {
-						"port": 6203,
-						"publicHost": "http://localhost:6203"
+						"port": 5203,
+						"publicHost": "http://localhost:5203"
 					}
 				},
 				"extract-i18n": {
