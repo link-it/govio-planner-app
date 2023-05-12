@@ -34,7 +34,7 @@ deploy_staging:
     - cp -r /tmp/ssh/ ~/.ssh
     - scp -r govio-planner-app.tgz $DEPLOY_STAGING_SSH_HOST:/tmp/
     - ssh $DEPLOY_STAGING_SSH_HOST 'sudo tar xvf /tmp/govio-planner-app.tgz'
-    - ssh $DEPLOY_STAGING_SSH_HOST 'sudo rm -rf /usr/share/nginx/html/govio-planner-app/* && sudo cp -r dist/govio-planner-app/* /usr/share/nginx/html/govio-planner-app/'
+    - ssh $DEPLOY_STAGING_SSH_HOST 'sudo rm -rf /usr/share/nginx/html/govio-planner-app/* && sudo cp -r dist/govio-planner/* /usr/share/nginx/html/govio-planner-app/'
     - ssh $DEPLOY_STAGING_SSH_HOST 'sudo rm -rf /tmp/govio-planner-app.tgz dist'
   only:
     - staging
