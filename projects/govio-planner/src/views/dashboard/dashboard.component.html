@@ -1,36 +1,17 @@
 <div id="route-section" class="">
-  <div class="alert-wrapper gp-force-block-formatting-context">
+  <!-- <div class="alert-wrapper gp-force-block-formatting-context">
     <ui-breadcrumb [breadcrumbs]="breadcrumbs"></ui-breadcrumb>
-  </div>
-  <section class="container-fluid container-scroller container-scroller-no-search px-0 container-scroller-no-top-area">
+  </div> -->
+  <section class="container-fluid container-scroller container-scroller-no-search px-0 container-scroller-no-top-area container-scroller-no-breadcrumb">
     <ui-box-spinner [color]="'accent'" [diameter]="48" [strokeWidth]="4" *ngIf="_spin"></ui-box-spinner>
-    <ng-container *ngIf="!_newDashboard">
+    <ng-container *ngIf="!_newDashboard && !_spin">
       <div class="dashboard" *ngIf="!_spin">
         <div class="row justify-content-center mt-5 mb-2">
-          <div class="col-lg-8 px-1 py-1 px-sm-2">
-            <div class="container-fluid">
-              <div class="row g-2">
-                <ng-container *ngFor="let item of navItems">
-                  <div class="col-12 col-lg-4 col-md-6 p-0 pr-2" *ngIf="sidebarNavHelper.isMenu(item)">
-                    <div class="dashboard-box mbr-text d-flex flex-column justify-content-top align-items-center" style="padding-top: 20%;">
-                      <div class="dashboard-box-title dashboard-box-title-button" [routerLink]="item.url">
-                        {{ item.label + '' | translate }}
-                      </div>
-                    </div>
-                  </div>
-                  <ng-container *ngFor="let children of item.children">
-                    <div class="col-12 col-lg-4 col-md-6 p-0 pr-2" *ngIf="sidebarNavHelper.isMenu(children)">
-                      <div class="dashboard-box mbr-text d-flex flex-column justify-content-top align-items-center" style="padding-top: 20%;">
-                        <div class="dashboard-box-title dashboard-box-title-button" [routerLink]="children.url">
-                          {{ children.label + '' | translate }}
-                        </div>
-                      </div>
-                    </div>  
-                  </ng-container>
-                </ng-container>
-              </div>
-            </div>
-          </div>
+          <ui-box-message style="padding-top: 5%;"
+            [image]="config.image"
+            [message]="config.title | translate"
+            [subMessage]="config.subTitle | translate">
+          </ui-box-message>
         </div>
       </div>
     </ng-container>
