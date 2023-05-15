@@ -3,5 +3,7 @@
 
   "image": "./assets/images/illustrations/dashboard.png",
   "title": "GovIO Planner",
-  "subTitle": "Pianifica e spedisci messaggi sull'AppIO"
+  "subTitle": "Pianifica e spedisci messaggi sull'AppIO",
+
+  "copyright": "©2023 Link.it S.r.l."
 }
