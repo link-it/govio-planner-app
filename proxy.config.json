@@ -1,5 +1,5 @@
 {
-  "/govio/api/*": {
+  "/govio-planner/api/*": {
     "target": "http://172.16.1.121:8083/govio-planner/api/v1",
     "secure": false,
     "logLevel": "debug",
