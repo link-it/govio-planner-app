@@ -155,7 +155,7 @@ export class GovioFilesComponent implements OnInit, AfterViewInit, AfterContentC
     if (!url) {
       this.files = [];
       const sort: any = { sort: this.sortField, sort_direction: this.sortDirection}
-      query = { ...query, embed: ['uploader'], ...sort };
+      query = { ...query, ...sort };
       aux = { params: this._queryToHttpParams(query) };
     }
 
@@ -190,24 +190,8 @@ export class GovioFilesComponent implements OnInit, AfterViewInit, AfterContentC
   }
 
   _prepareFileData(data: any) {
-    const _serviceInstance = data._embedded['service-instance'];
-    const _organization: any = {
-      ..._serviceInstance._embedded.organization,
-      logo: _serviceInstance._embedded.organization._links.logo?.href || null,
-      logo_small: _serviceInstance._embedded.organization._links['logo-miniature']?.href || null
-    }
-    const _service: any = {
-      ..._serviceInstance._embedded.service,
-      logo: _serviceInstance._embedded.service._links.logo?.href || null,
-      logo_small: _serviceInstance._embedded.service._links['logo-miniature']?.href || null
-    }
-
     let _file: any = {
       ...data,
-      service_instance: _serviceInstance,
-      organization: _organization,
-      service: _service,
-      template: _serviceInstance._embedded.template,
     };
 
     return _file;
